@@ -1,0 +1,1428 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "BAN_DURATION",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "BAN_THRESHOLD",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "MIN_STAKE_AMOUNT",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "MONITORING_DURATION",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "MONITORING_REWARD",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "QUALITY_THRESHOLD",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "SLASHING_PERCENTAGE",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "STARTING_SCORE",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "activeMonitoringIds",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "assignRandomMonitoring",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "authorizedReporters",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "banRunner",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "depositStake",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getActiveMonitoringAssignments",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "string[]",
+        "internalType": "string[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getMonitoringAssignment",
+    "inputs": [
+      {
+        "name": "assignmentId",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct RunnerReputation.MonitoringAssignment",
+        "components": [
+          {
+            "name": "monitorId",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "targetId",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "startTime",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "duration",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "isActive",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "reportSubmitted",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "reportType",
+            "type": "uint8",
+            "internalType": "enum RunnerReputation.MonitoringReportType"
+          },
+          {
+            "name": "evidenceHash",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "submissionTime",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "verified",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "monitorReward",
+            "type": "int256",
+            "internalType": "int256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getNetworkStats",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct RunnerReputation.NetworkStats",
+        "components": [
+          {
+            "name": "totalRunners",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "activeRunners",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "bannedRunners",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "averageReputation",
+            "type": "int256",
+            "internalType": "int256"
+          },
+          {
+            "name": "totalTasks",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "activeMonitoringAssignments",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalSlashedAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalStakedAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getReputationEvents",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct RunnerReputation.ReputationEvent[]",
+        "components": [
+          {
+            "name": "eventType",
+            "type": "uint8",
+            "internalType": "enum RunnerReputation.ReputationEventType"
+          },
+          {
+            "name": "scoreDelta",
+            "type": "int256",
+            "internalType": "int256"
+          },
+          {
+            "name": "timestamp",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "reason",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "reporter",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "relatedMonitoringId",
+            "type": "string",
+            "internalType": "string"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getRunnerMonitoringHistory",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "string[]",
+        "internalType": "string[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getRunnerProfile",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct RunnerReputation.RunnerProfile",
+        "components": [
+          {
+            "name": "runnerId",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "walletAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "reputationScore",
+            "type": "int256",
+            "internalType": "int256"
+          },
+          {
+            "name": "status",
+            "type": "uint8",
+            "internalType": "enum RunnerReputation.RunnerStatus"
+          },
+          {
+            "name": "totalTasks",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "successfulTasks",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "failedTasks",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "maliciousReports",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "joinedAt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "lastActiveAt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "bannedAt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "banReason",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "ipfsDataHash",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "stakedAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalEarnings",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalSlashed",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "monitoringScore",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "timesMonitored",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "timesMonitoring",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getRunnerStatus",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "reputationScore",
+        "type": "int256",
+        "internalType": "int256"
+      },
+      {
+        "name": "status",
+        "type": "uint8",
+        "internalType": "enum RunnerReputation.RunnerStatus"
+      },
+      {
+        "name": "totalTasks",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "successRate",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "isBanned",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getRunners",
+    "inputs": [
+      {
+        "name": "offset",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "limit",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "string[]",
+        "internalType": "string[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getTopRunners",
+    "inputs": [
+      {
+        "name": "limit",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "topRunners",
+        "type": "string[]",
+        "internalType": "string[]"
+      },
+      {
+        "name": "scores",
+        "type": "int256[]",
+        "internalType": "int256[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "isRunnerBanned",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "isRunnerEligible",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "monitoringAssignments",
+    "inputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "monitorId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "targetId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "startTime",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "duration",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "isActive",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "reportSubmitted",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "reportType",
+        "type": "uint8",
+        "internalType": "enum RunnerReputation.MonitoringReportType"
+      },
+      {
+        "name": "evidenceHash",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "submissionTime",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "verified",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "monitorReward",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "networkStats",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "totalRunners",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "activeRunners",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "bannedRunners",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "averageReputation",
+        "type": "int256",
+        "internalType": "int256"
+      },
+      {
+        "name": "totalTasks",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "activeMonitoringAssignments",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalSlashedAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalStakedAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "nextMonitoringId",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "owner",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "permanentBans",
+    "inputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "registerRunner",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "walletAddress",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "reputationEvents",
+    "inputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "eventType",
+        "type": "uint8",
+        "internalType": "enum RunnerReputation.ReputationEventType"
+      },
+      {
+        "name": "scoreDelta",
+        "type": "int256",
+        "internalType": "int256"
+      },
+      {
+        "name": "timestamp",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "reporter",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "relatedMonitoringId",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "runnerIds",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "runnerMonitoringHistory",
+    "inputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "runners",
+    "inputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "walletAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "reputationScore",
+        "type": "int256",
+        "internalType": "int256"
+      },
+      {
+        "name": "status",
+        "type": "uint8",
+        "internalType": "enum RunnerReputation.RunnerStatus"
+      },
+      {
+        "name": "totalTasks",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "successfulTasks",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "failedTasks",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "maliciousReports",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "joinedAt",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "lastActiveAt",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "bannedAt",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "banReason",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "ipfsDataHash",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "stakedAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalEarnings",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "totalSlashed",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "monitoringScore",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "timesMonitored",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "timesMonitoring",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "slashStake",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "slashedAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "submitMonitoringReport",
+    "inputs": [
+      {
+        "name": "assignmentId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "reportType",
+        "type": "uint8",
+        "internalType": "enum RunnerReputation.MonitoringReportType"
+      },
+      {
+        "name": "evidenceHash",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateReputation",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "eventType",
+        "type": "uint8",
+        "internalType": "enum RunnerReputation.ReputationEventType"
+      },
+      {
+        "name": "scoreDelta",
+        "type": "int256",
+        "internalType": "int256"
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "walletToRunnerId",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "withdrawStake",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "BanThresholdUpdated",
+    "inputs": [
+      {
+        "name": "oldThreshold",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "newThreshold",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "IPFSHashUpdated",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "ipfsHash",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "MonitoringAssigned",
+    "inputs": [
+      {
+        "name": "monitorId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "targetId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "duration",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "MonitoringReportSubmitted",
+    "inputs": [
+      {
+        "name": "monitorId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "targetId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "reportType",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "evidence",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "QualityThresholdUpdated",
+    "inputs": [
+      {
+        "name": "oldThreshold",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "newThreshold",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ReputationUpdated",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "oldScore",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "newScore",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "RunnerBanned",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "walletAddress",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "RunnerRegistered",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "walletAddress",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "RunnerUnbanned",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "walletAddress",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SlashingExecuted",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "wallet",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "StakeDeposited",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "wallet",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "StakeWithdrawn",
+    "inputs": [
+      {
+        "name": "runnerId",
+        "type": "string",
+        "indexed": true,
+        "internalType": "string"
+      },
+      {
+        "name": "wallet",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  }
+]
