@@ -95,6 +95,14 @@ deploy-local: ## Deploy to local network
 	@echo "$(YELLOW)Deploying to local network...$(NC)"
 	$(FORGE) script $(DEPLOY_SCRIPT) --rpc-url http://localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
 
+deploy-proxy-local: ## Deploy proxy to local network
+	@echo "$(YELLOW)Deploying proxy to local network...$(NC)"
+	$(FORGE) script script/DeployProxy.s.sol:DeployProxyScript --rpc-url http://localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast --ffi
+
+upgrade-local: ## Upgrade proxy on local network
+	@echo "$(YELLOW)Upgrading proxy on local network...$(NC)"
+	$(FORGE) script script/UpgradeRunnerReputation.s.sol:UpgradeScript --rpc-url http://localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast --ffi
+
 ## Filecoin Calibration Network
 deploy-calibration: check-env ## Deploy to Filecoin Calibration testnet
 	@echo "$(YELLOW)Deploying to Filecoin Calibration testnet...$(NC)"
@@ -119,6 +127,39 @@ deploy-calibration-verify: check-env check-api-key ## Deploy to Filecoin Calibra
 		--ffi \
 		-vvvv
 
+deploy-proxy-calibration: check-env ## Deploy proxy to Filecoin Calibration testnet
+	@echo "$(YELLOW)Deploying proxy to Filecoin Calibration testnet...$(NC)"
+	$(FORGE) script script/DeployProxy.s.sol:DeployProxyScript \
+		--rpc-url $(RPC_URL) \
+		--private-key $(PRIVATE_KEY) \
+		--broadcast \
+		--skip-simulation \
+		--ffi \
+		-vvvv
+
+deploy-proxy-calibration-verify: check-env check-api-key ## Deploy proxy to Filecoin Calibration with verification
+	@echo "$(YELLOW)Deploying proxy to Filecoin Calibration with verification...$(NC)"
+	$(FORGE) script script/DeployProxy.s.sol:DeployProxyScript \
+		--rpc-url $(RPC_URL) \
+		--private-key $(PRIVATE_KEY) \
+		--broadcast \
+		--verify \
+		--chain-id $(CHAIN_ID) \
+		--etherscan-api-key $(ETHERSCAN_API_KEY) \
+		--skip-simulation \
+		--ffi \
+		-vvvv
+
+upgrade-calibration: check-env check-proxy ## Upgrade proxy on Filecoin Calibration
+	@echo "$(YELLOW)Upgrading proxy on Filecoin Calibration...$(NC)"
+	$(FORGE) script script/UpgradeRunnerReputation.s.sol:UpgradeScript \
+		--rpc-url $(RPC_URL) \
+		--private-key $(PRIVATE_KEY) \
+		--broadcast \
+		--skip-simulation \
+		--ffi \
+		-vvvv
+
 deploy-calibration-dry: ## Dry run deployment to Filecoin Calibration
 	@echo "$(YELLOW)Dry run deployment to Filecoin Calibration...$(NC)"
 	$(FORGE) script $(DEPLOY_SCRIPT) --rpc-url $(RPC_URL) --private-key $(PRIVATE_KEY)
@@ -137,6 +178,32 @@ verify-calibration: ## Verify contract on Filecoin Calibration
 		--chain-id $(CHAIN_ID) \
 		$(CONTRACT_ADDRESS) \
 		$(CONTRACT_FILE):$(CONTRACT_NAME)
+
+verify-calibration-implementation: ## Verify implementation contract on Filecoin Calibration
+	@echo "$(YELLOW)Verifying implementation contract on Filecoin Calibration...$(NC)"
+	@if [ -z "$(CONTRACT_ADDRESS)" ]; then \
+		echo "$(RED)Error: CONTRACT_ADDRESS not set. Use: make verify-calibration-implementation CONTRACT_ADDRESS=0x...$(NC)"; \
+		exit 1; \
+	fi
+	$(FORGE) verify-contract \
+		--rpc-url $(RPC_URL) \
+		--etherscan-api-key $(ETHERSCAN_API_KEY) \
+		--chain-id $(CHAIN_ID) \
+		$(CONTRACT_ADDRESS) \
+		src/RunnerReputationUpgradeable.sol:RunnerReputationUpgradeable
+
+verify-calibration-proxy: ## Verify proxy contract on Filecoin Calibration
+	@echo "$(YELLOW)Verifying proxy contract on Filecoin Calibration...$(NC)"
+	@if [ -z "$(CONTRACT_ADDRESS)" ]; then \
+		echo "$(RED)Error: CONTRACT_ADDRESS not set. Use: make verify-calibration-proxy CONTRACT_ADDRESS=0x...$(NC)"; \
+		exit 1; \
+	fi
+	$(FORGE) verify-contract \
+		--rpc-url $(RPC_URL) \
+		--etherscan-api-key $(ETHERSCAN_API_KEY) \
+		--chain-id $(CHAIN_ID) \
+		$(CONTRACT_ADDRESS) \
+		src/RunnerReputationProxy.sol:RunnerReputationProxy
 
 ## Network Interaction
 get-balance: ## Get balance of deployer address
@@ -205,6 +272,12 @@ check-api-key:
 check-contract:
 	@if [ -z "${CONTRACT_ADDRESS}" ]; then \
 		echo "$(RED)Error: CONTRACT_ADDRESS is required for this operation$(NC)"; \
+		exit 1; \
+	fi
+
+check-proxy:
+	@if [ -z "${RUNNER_REPUTATION_PROXY_ADDRESS}" ]; then \
+		echo "$(RED)Error: RUNNER_REPUTATION_PROXY_ADDRESS is required for upgrades$(NC)"; \
 		exit 1; \
 	fi
 
